@@ -35,10 +35,10 @@ export default function Header({ className, menuItems }) {
             <Link href="/">
               <a title="Home">
                 <Image
-                  src="/logo.png"
-                  width={400}
-                  height={80}
-                  alt="Blueprint media logo"
+                  src="/monocrom-logo.webp"
+                  width={290}
+                  height={31}
+                  alt="Monocrom logo"
                   layout="responsive"
                 />
               </a>

@@ -130,12 +130,12 @@ export default function Footer({ menuItems }) {
             </div>
           )}
 
-          <div className="logo_item">
+          <div className={cx('logo_item')}>
             <Image
-              src="/logo.png"
-              width={400}
-              height={80}
-              alt="Blueprint media logo"
+              src="/footer-logo.webp"
+              width={178}
+              height={58}
+              alt="Monocrom logo"
               layout="responsive"
             />
           </div>
