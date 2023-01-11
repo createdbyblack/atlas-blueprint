@@ -37,4 +37,4 @@ yarn-error.log*
 *.tsbuildinfo
 
 .idea/
-.package.json
+package.json
