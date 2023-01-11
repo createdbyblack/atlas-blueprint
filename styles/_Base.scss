@@ -23,6 +23,7 @@ body {
   font-weight: $font-weight-light;
   letter-spacing: 0em;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 img {
@@ -79,4 +80,14 @@ hr {
   border-radius: 0.25rem;
   color: #c53030;
   padding: 1rem;
+}
+
+.not-ready, .hidden{
+  display: none!important;
+}
+
+
+.inline_ul li{
+  display: inline-block;
+  list-style-type: none;
 }

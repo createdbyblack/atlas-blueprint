@@ -2,25 +2,47 @@
 
 .footer {
   position: relative;
-  background-color: var(--color-primary);
-  padding: 3rem;
+  background-color: var(--color-tertiary);
+  font-weight: $font-weight-normal;
+  padding: 200px 3rem 3rem 3rem;
   margin-top: 4rem;
-  color: var(--color-white);
+  color: #12212b;
+  border-radius: 60px 60px 0 0;
 
   a {
-    color: var(--color-white);
+    color: #12212b;
     text-decoration: underline;
 
     &:hover,
     &:focus {
-      color: var(--color-white);
+      color: #12212b;
     }
   }
+
+  li, p, span{
+    opacity: .5;
+  }
+
+  span{ 
+    display: block;
+    font-size: 16px;
+    margin-bottom: 1rem;
+  
+  }
+
+  
+}
+
+.ftr_wrap{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 100px;
+
 }
 
 .social-links {
-  display: flex;
-  justify-content: center;
+  // display: flex;
+  // justify-content: center;
   margin-bottom: 3rem;
 
   ul {
@@ -40,29 +62,29 @@
 
   .social-icon-link {
     display: flex;
-    width: 4rem;
-    height: 4rem;
-    padding: 1rem;
-    border: 1px solid var(--color-white);
-    border-radius: 99rem;
+    // width: 4rem;
+    // height: 4rem;
+    // padding: 1rem;
+    // border: 1px solid var(--color-black);
+    // border-radius: 99rem;
     vertical-align: middle;
     font-size: 2rem;
     justify-content: center;
     align-items: center;
-    color: var(--color-white);
+    color: var(--color-black);
     background-color: transparent;
     transition: background-color 0.1s ease-in-out;
 
     .social-icon {
-      color: var(--color-white);
+      // color: var(--color-black);
       vertical-align: middle;
       transition: color 0.1s ease-in-out;
     }
 
     &:hover,
     &:focus {
-      color: var(--color-primary);
-      background-color: var(--color-white);
+      // color: var(--color-primary);
+      // background-color: var(--color-black);
 
       .social-icon {
         color: var(--color-primary);
@@ -73,7 +95,7 @@
 
 .nav {
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   margin-bottom: 3rem;
   margin-right: auto;
   font-size: 1.8rem;
@@ -94,9 +116,10 @@
   li {
     margin: 0;
     margin-bottom: 1rem;
+    font-size: 2rem;
 
     @media (min-width: $breakpoint-small) {
-      margin-right: 3rem;
+      margin-right: 4rem;
       margin-bottom: 0;
     }
 
@@ -116,6 +139,21 @@
 }
 
 .copyright {
-  text-align: center;
+  // text-align: center;
+  display: flex;
+  justify-content: space-between;
   font-size: 1.5rem;
+  font-size: 12px;
+
+  li{ 
+    padding-right: 30px;
+    text-decoration: underline;
+
+    &:hover{
+      text-decoration: none;
+    }
+
+    
+  }
+
 }

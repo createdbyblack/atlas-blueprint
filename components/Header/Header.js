@@ -56,13 +56,13 @@ export default function Header({ className, menuItems }) {
             className={navClasses}
             menuItems={menuItems}
           >
-            <li>
+            {/* <li>
               <Link href="/search">
                 <a>
                   <FaSearch title="Search" role="img" />
                 </a>
               </Link>
-            </li>
+            </li> */}
           </NavigationMenu>
         </div>
       </div>
