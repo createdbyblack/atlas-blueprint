@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 import {
-  FaFacebookF,
-  FaGithub,
+  // FaFacebookF,
+  // FaGithub,
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
@@ -160,7 +160,7 @@ export default function Footer({ menuItems }) {
             </li>
            </ul>
 
-           <p>Created by <a href="https://createdbyblack.com/" target="_blank">Black</a></p>
+           <p>Created by <a href="https://createdbyblack.com/" target="_blank" rel="noopener noreferrer">Black</a></p>
           
         </div>
       </div>
