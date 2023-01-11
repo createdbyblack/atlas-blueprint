@@ -1,160 +1,95 @@
 import * as MENUS from 'constants/menus';
 
-import { useQuery, gql } from '@apollo/client';
-import { FaArrowRight } from 'react-icons/fa';
-import styles from 'styles/pages/_Home.module.scss';
+import { gql } from '@apollo/client';
+import { BlogInfoFragment } from 'fragments/GeneralSettings';
+import { pageTitle } from 'utilities';
+
 import {
-  EntryHeader,
-  Main,
-  Button,
-  Heading,
-  CTA,
-  NavigationMenu,
-  SEO,
   Header,
   Footer,
-  Posts,
-  Testimonials,
-} from 'components';
-import { BlogInfoFragment } from 'fragments/GeneralSettings';
+  Main,
+  ContentWrapper,
+  EntryHeader,
+  NavigationMenu,
+  FeaturedImage,
+  SEO,
+} from '../components';
 
-const postsPerPage = 3;
-
-export default function Component() {
-  const { data, loading } = useQuery(Component.query, {
-    variables: Component.variables(),
-  });
-  if (loading) {
-    return null;
+export default function Component(props) {
+  // Loading state for previews
+  if (props.loading) {
+    return <>Loading...</>;
   }
 
   const { title: siteTitle, description: siteDescription } =
-    data?.generalSettings;
-  const primaryMenu = data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = data?.footerMenuItems?.nodes ?? [];
+    props?.data?.generalSettings;
+  const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
+  const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
+  const { title, content, featuredImage } = props?.data?.page ?? { title: '' };
 
-  const mainBanner = {
-    sourceUrl: '/static/banner.jpeg',
-    mediaDetails: { width: 1200, height: 600 },
-    altText: 'Portfolio Banner',
-  };
   return (
     <>
-      <SEO title={siteTitle} description={siteDescription} />
-
+      <SEO
+        title={pageTitle(
+          props?.data?.generalSettings,
+          title,
+          props?.data?.generalSettings?.title
+        )}
+        description={siteDescription}
+        imageUrl={featuredImage?.node?.sourceUrl}
+      />
       <Header
         title={siteTitle}
         description={siteDescription}
         menuItems={primaryMenu}
       />
-
-      <Main className={styles.home}>
-        <EntryHeader image={mainBanner} />
-        <div className="container">
-          <section className="hero text-center">
-            <Heading className={styles.heading} level="h1">
-              Welcome to your Blueprint
-            </Heading>
-            <p className={styles.description}>
-              Achieve unprecedented performance with modern frameworks and the
-              world&apos;s #1 open source CMS in one powerful headless platform.{' '}
-            </p>
-            <div className={styles.actions}>
-              <Button styleType="secondary" href="/contact-us">
-                GET STARTED
-              </Button>
-              <Button styleType="primary" href="/about">
-                LEARN MORE
-              </Button>
+      <div className="full-width-content">
+        <Main className="site-container">
+          <>
+            <div className="container entry-content">
+              <ContentWrapper content={content} />
             </div>
-          </section>
-          <section className="cta">
-            <CTA
-              Button={() => (
-                <Button href="/posts">
-                  Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
-                </Button>
-              )}
-            >
-              <span>
-                Learn about Core Web Vitals and how Atlas can help you reach
-                your most demanding speed and user experience requirements.
-              </span>
-            </CTA>
-          </section>
-          <section className={styles.posts}>
-            <Heading className={styles.heading} level="h2">
-              Latest Posts
-            </Heading>
-            <Posts posts={data.posts?.nodes} id="posts-list" />
-          </section>
-          <section className="cta">
-            <CTA
-              Button={() => (
-                <Button href="/posts">
-                  Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
-                </Button>
-              )}
-            >
-              <span>
-                Learn about Core Web Vitals and how Atlas can help you reach
-                your most demanding speed and user experience requirements.
-              </span>
-            </CTA>
-          </section>
-          <section className={styles.testimonials}>
-            <Heading className={styles.heading} level="h2">
-              Testimonials
-            </Heading>
-            <p className={styles.description}>
-              Here are just a few of the nice things our customers have to say.
-            </p>
-            <Testimonials testimonials={data?.testimonials?.nodes} />
-          </section>
-        </div>
-      </Main>
-      <Footer menuItems={footerMenu} />
+          </>
+        </Main>
+      </div>
+      <Footer title={siteTitle} menuItems={footerMenu} />
     </>
   );
 }
 
-Component.variables = () => {
+Component.variables = ({ databaseId }, ctx) => {
   return {
+    databaseId,
     headerLocation: MENUS.PRIMARY_LOCATION,
     footerLocation: MENUS.FOOTER_LOCATION,
-    first: postsPerPage,
+    asPreview: ctx?.asPreview,
   };
 };
 
 Component.query = gql`
   ${BlogInfoFragment}
   ${NavigationMenu.fragments.entry}
-  ${Posts.fragments.entry}
-  ${Testimonials.fragments.entry}
+  ${FeaturedImage.fragments.entry}
   query GetPageData(
+    $databaseId: ID!
     $headerLocation: MenuLocationEnum
     $footerLocation: MenuLocationEnum
-    $first: Int
+    $asPreview: Boolean = false
   ) {
-    posts(first: $first) {
-      nodes {
-        ...PostsItemFragment
-      }
-    }
-    testimonials {
-      nodes {
-        ...TestimonialsFragment
-      }
+    page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
+      title
+      content
+      ...FeaturedImageFragment
     }
     generalSettings {
       ...BlogInfoFragment
     }
-    headerMenuItems: menuItems(where: { location: $headerLocation }) {
+    footerMenuItems: menuItems(where: { location: $footerLocation }) {
       nodes {
         ...NavigationMenuItemFragment
       }
     }
-    footerMenuItems: menuItems(where: { location: $footerLocation }) {
+    headerMenuItems: menuItems(where: { location: $headerLocation }) {
       nodes {
         ...NavigationMenuItemFragment
       }

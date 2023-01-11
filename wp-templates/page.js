@@ -43,14 +43,15 @@ export default function Component(props) {
         description={siteDescription}
         menuItems={primaryMenu}
       />
-      <Main>
-        <>
-          <EntryHeader title={title} image={featuredImage?.node} />
-          <div className="container">
-            <ContentWrapper content={content} />
-          </div>
-        </>
-      </Main>
+      <div className="full-width-content">
+        <Main className="site-container">
+          <>
+            <div className="container entry-content">
+              <ContentWrapper content={content} />
+            </div>
+          </>
+        </Main>
+      </div>
       <Footer title={siteTitle} menuItems={footerMenu} />
     </>
   );

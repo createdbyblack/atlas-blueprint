@@ -37,3 +37,6 @@ yarn-error.log*
 *.tsbuildinfo
 
 .idea/
+.npmrc
+package.json
+package-lock.json
