@@ -16,7 +16,316 @@
 @import 'https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap';
 
 
+// Home Hero Section
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
 .home_hero {
-    padding-bottom: 100px!important;
+    padding-bottom: 150px!important;
     padding-top: 500px!important;
+}
+
+
+header{
+    .container{
+      max-width: 1600px;
+      width: 100%;
+      padding: 0;
+    }
+}
+
+// About Section
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+.sec_home_about { 
+    margin-top: -40px;
+    border-radius: 60px 60px 0 0 ;
+
+    .wp-block-columns{
+        gap: 30px;
+
+        .col_img{
+
+            img{
+                width: 500px;
+            }
+        }
+
+        .col_txt{
+
+            h2{
+                margin-top: 0px;
+                margin-bottom: 40px;
+            }
+
+            .monocrom_light{
+                margin-top: 40px;
+                margin-bottom: 45px;
+
+                figure{
+                    margin-bottom: 10px;
+
+                    img{
+                        height: 170px;
+                    }
+                }
+
+                p{
+                    font-weight: $font-weight-medium;
+                }
+            }
+        }
+    }
+}
+
+
+// Experience Section
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+.sec_magic {
+
+    .gb-container-image{
+        border-radius: 60px;
+    }
+
+    h3{
+        margin-top: 0px;
+        margin-bottom: 30px;
+    }
+}
+
+// Testimonial Section
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+.sec_testimonial {
+    overflow: hidden;
+    height: 900px;
+
+    .wp-block-columns{
+        margin-bottom: 0px;
+    }
+    .col_img{
+
+       figure{
+            margin-bottom: 0px;
+            height: 100%;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: right;
+            }
+       }
+    }
+
+    .col_txt{
+        .gb-block-container{
+            padding: 80px 15% 45px 10%!important;
+            height: 900px;
+            overflow-y: auto;
+
+            h3{
+                margin-top: 0px;
+            }
+    
+            p{
+                margin: 0px;
+            }
+    
+            .testimony{
+                padding-bottom: 100px;
+            }
+        }
+       
+    }
+}
+
+
+
+// Prefoter Section
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+.prefooter {
+    padding: 150px 5% 0 5%!important;
+
+    .box_wrapper{
+        border-radius: 40px;
+        box-shadow: 0 10px 60px 0 rgba(0, 255, 167, 0.16);
+        background-color: #fff;
+        margin-bottom: 0px;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        margin-bottom: -100px;
+        align-items: center!important;
+        cursor: pointer;
+        
+
+        .col_txt{
+            padding: 50px 80px;
+            transition: all .3s ease-in-out;
+
+            h3{
+                margin-top: 0;
+                margin-bottom: 35px;
+            }
+
+            p{
+                margin: 0px;
+            }
+        }
+
+        .col_img{
+            .gb-block-container{
+                height: 100%;
+
+                .gb-container-image-wrap{
+                    overflow: hidden;
+                }
+                .gb-container-image-wrap::before{
+                    content: "";
+                    background: transparent;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    left: 0;
+                    transform: scale(1.2);
+                }
+
+                .gb-container-image{
+                    transform: scale(1);
+                    transition: all .3s ease-in-out;
+                }
+            }
+
+            .bt_arrow{
+                text-align: center;
+                margin: 0;
+
+                img{
+                    margin: auto;
+                    width: 100px;
+                    transform: scale(0);
+                    transition: all .3s ease-in-out;
+                }
+            }
+        }
+        &:hover {
+            .col_txt{
+                transform: translateX(-30px);
+                transition: all .3s ease-in-out;
+            }
+
+            .col_img{
+                .gb-container-image-wrap::before{
+                    background: rgb(0 0 0 / 20%);
+                }
+                .gb-container-image{
+                    transform: scale(1.2);
+                    transition: all .3s ease-in-out;
+                }
+            }
+
+            .bt_arrow img{
+                transform: scale(1);
+                transition: all .3s ease-in-out;
+            }
+        }
+    }
+}
+
+
+
+// About Hero Section
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+.about_hero{
+
+    .gb-container-content{
+        width: 84%;
+    }
+
+    .wp-block-columns{
+        gap: 100px;
+    }
+}
+
+
+
+// How it works Section
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+.sec_how_it_works{
+
+    figure{
+        margin-bottom: 0;
+    }
+
+   .col_img{
+        padding-left: 5%;
+        p{
+            font-weight: $font-weight-medium;
+            margin-bottom: 60px;
+        }
+   }
+}
+
+
+// electromagnetic  Section
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+.sec_spectrum{
+
+    h3{
+        margin-bottom: 80px;
+    }
+    .spectrum_img{
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        max-width: 100vw;
+        padding-left: 10%;
+        overflow-x: auto;
+
+        img{
+            width: 130%;
+            max-width: 200%;
+        }
+    }
+}
+
+
+// About - People Section
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+.sec_people{
+
+    .wp-block-columns{
+        padding-top: 45px;
+        margin-bottom: 0;
+
+        .col_txt{
+            
+            .wp-block-group{
+                width: 80%;
+            }
+        }
+
+        h3{
+            margin-bottom: 0;
+        }
+
+        h4{
+            margin-bottom: 0;
+        }
+
+        .wp-block-social-links{
+            padding: 10px 0 5px 0;
+            display:  flex;
+            gap: 10px;
+
+            svg{
+                width: 22px;
+                height: 22px;
+            }
+
+            li{
+
+                &:hover{
+                    transform: scale(1);
+                }
+            }
+        }
+    }
 }

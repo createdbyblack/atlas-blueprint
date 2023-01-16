@@ -53,6 +53,16 @@ p {
   margin-top: 0;
 }
 
+.gb-block-container h1,
+.gb-block-container h2,
+.gb-block-container h3,
+.gb-block-container h4,
+.gb-block-container h5,
+.gb-block-container h6{
+  margin-top: 0px;
+  margin-bottom: 40px;
+}
+
 // Links
 a {
   color: var(--color-black);

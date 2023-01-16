@@ -6,7 +6,7 @@
   position: absolute;
   z-index: 10;
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 3rem;
 }
 
 .bar {
@@ -77,15 +77,22 @@
       display: inline-flex;
       align-items: center;
       height: 100%;
-      padding: 1rem;
-      font-weight: $font-weight-bold;
+      padding: 1rem 4rem;
+      font-weight: $font-weight-medium;
       color: var(--color-white);
+      transition: all .3s;
+      font-size: 16px;
+
+      &.bt_monocrom{
+        
+      }
 
       &:hover,
       &:focus {
-        border: 1px solid var(--color-white);
+        // border: 1px solid var(--color-white);
         color: var(--color-white);
-        padding: 0.9rem;
+        padding: 1rem 4rem;
+        transition: all .3s;
       }
     }
   }
