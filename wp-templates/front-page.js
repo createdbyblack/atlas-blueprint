@@ -8,8 +8,7 @@ import {
   Header,
   Footer,
   Main,
-  ContentWrapper,
-  EntryHeader,
+  ContentWrapper, 
   NavigationMenu,
   FeaturedImage,
   SEO,
@@ -39,6 +38,7 @@ export default function Component(props) {
         imageUrl={featuredImage?.node?.sourceUrl}
       />
       <Header
+        className="home"
         title={siteTitle}
         description={siteDescription}
         menuItems={primaryMenu}

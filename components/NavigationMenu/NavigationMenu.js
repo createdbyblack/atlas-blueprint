@@ -20,7 +20,7 @@ export default function NavigationMenu({ menuItems, className, children }) {
         {menuItems.map((item) => {
           const { id, path, label } = item;
           return (
-            <li key={id ?? ''}>
+            <li className={"menu-" + id} key={id ?? ''}>
               <Link href={path ?? ''}>{label ?? ''}</Link>
             </li>
           );

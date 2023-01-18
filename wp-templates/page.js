@@ -9,7 +9,6 @@ import {
   Footer,
   Main,
   ContentWrapper,
-  EntryHeader,
   NavigationMenu,
   FeaturedImage,
   SEO,
@@ -39,6 +38,7 @@ export default function Component(props) {
         imageUrl={featuredImage?.node?.sourceUrl}
       />
       <Header
+        className="sub-page"
         title={siteTitle}
         description={siteDescription}
         menuItems={primaryMenu}
