@@ -32,9 +32,10 @@ const Step4 = ({
   return (
     <>
       <p>STEP {step}/4 Individual or organization</p>
-      <p>What are your working days and hours</p>
+      <h3>What are your working days and hours</h3>
+      <span>(Select all that apply)</span>
       <section className={styles['form_submit']}>
-        <form className="form_wrapper">
+        <form className="form_wrapper step4">
           <section className={styles['form_fields']}>
             <fieldset>
               <label htmlFor="label1">label1</label>

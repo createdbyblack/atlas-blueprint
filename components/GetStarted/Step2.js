@@ -36,8 +36,8 @@ const Step2 = ({ stepIncrement, step, peopleCount, setPeopleCount }) => {
   return (
     <>
       <p>STEP {step}/4 Organization</p>
-      <p>How many people in your organization?</p>
-      <form className="form_wrapper">
+      <h3>How many people in your organization?</h3>
+      <form className="form_wrapper step2">
         <section className={styles['form_fields']}>
           <fieldset>
             {peopleCount.map((obj, i) => {
@@ -59,7 +59,7 @@ const Step2 = ({ stepIncrement, step, peopleCount, setPeopleCount }) => {
                       style={{
                         border: peopleCountError
                           ? 'solid red 1px'
-                          : 'solid black 1px',
+                          : 'solid transparent 1px',
                       }}
                     >
                       {obj.count}

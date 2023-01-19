@@ -177,18 +177,20 @@ export default function Page() {
       />
 
       <div className={styles['page_container']}>
-        <div className={styles['message']}>
-          <h2>Get started with Monochrom today!</h2>
-          <p>
-            All you need to do is answer<br></br>
-            these quick questions and your journey to<br></br>
-            light therapy can begin.
-          </p>
-        </div>
-        <div className={styles['form_container']}>
-          {form}
-          <div className={styles['circle_container']}>
-            {step != 5 && <StepsIndicator step={step} setStep={setStep} />}
+        <div className={styles['page_wrapper']}>
+          <div className={styles['message']}>
+            <h2 className={styles['font_baskerville']}>Get started with Monochrom <em>today!</em></h2>
+            <p>
+              All you need to do is answer 
+              these quick questions and your journey to
+              light therapy can begin.
+            </p>
+          </div>
+          <div className={styles['form_container']}>
+            {form}
+            <div className={styles['circle_container']}>
+              {step != 5 && <StepsIndicator step={step} setStep={setStep} />}
+            </div>
           </div>
         </div>
       </div>

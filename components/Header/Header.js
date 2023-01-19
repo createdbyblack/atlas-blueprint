@@ -35,7 +35,17 @@ export default function Header({ className, menuItems }) {
             <Link href="/">
               <a title="Home">
                 <Image
+                  className={cx('light_logo')}
                   src="/monocrom-logo.webp"
+                  width={290}
+                  height={31}
+                  alt="Monocrom logo"
+                  layout="responsive"
+                />
+
+                <Image
+                  className={cx('dark_logo')}
+                  src="/logo-dark.svg"
                   width={290}
                   height={31}
                   alt="Monocrom logo"

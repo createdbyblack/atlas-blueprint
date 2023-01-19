@@ -1,28 +1,94 @@
 .page_container {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  align-items: center;
+  background: #deddd9;
+  padding: 0px 5%;
+  
+  
+
+  .page_wrapper{
+    display: flex;
+    flex-wrap: nowrap!important;
+    justify-content: space-between;
+    // grid-template-columns: 1fr 1fr;
+    // grid-template-rows: auto;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 200px 0%;
+  }
 
   .message {
-    width: 40vw;
-    height: 100vh;
+    flex-basis: 40%;
+    max-width: 540px;
+
+    h2{
+      font-size: 4.3rem;
+      margin-bottom: 35px;;
+
+      &.font_baskerville em{
+        font-family: "Libre Baskerville", serif;
+      }
+    }
+    p{
+      font-size: 2rem;
+    }
   }
 
   .form_container {
-    width: 40vw;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
+    flex-basis: 60%;
+    max-width: 650px;
+    border-radius: 40px;
+    box-shadow: 0 10px 60px 0 rgb(0 255 167 / 16%);
+    background-color: #fff;
+    padding: 30px 30px 45px 30px;
+
+    p{
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 35px;
+    }
+
+    h3{
+      padding: 0 10px;
+      font-size: 2.5rem;
+      margin-bottom: 5px;
+    }
+
+    h3 + span{
+      font-family: "Libre Baskerville", serif;
+      font-style: italic;
+      padding: 0 10px;
+      opacity: 0.5;
+    }
+
+    form{
+      padding: 10px 10px 0 10px;
+    }
+
     fieldset {
       margin-bottom: 0;
       padding: 0;
       border: 0;
     }
 
+    .form_submit{
+      text-align: center;
+
+      button{
+        border-radius: 29px;
+        background-color: #ebebeb;
+        border: none;
+        font-weight: 700;
+        color: rgb(0 0 0 / 20%);
+        padding: 15px 70px;
+        cursor: pointer;
+      }
+    }
+
+    
+
+    // form fields
     .form_fields {
+
       .radio_shift {
         position: absolute;
         height: 0;
@@ -31,17 +97,18 @@
       }
       [type='radio'] + p {
         cursor: pointer;
-        border: black solid 1px;
+        // border: black solid 1px;
         padding: 1em;
       }
 
       [type='radio']:checked + p {
-        background-color: gray;
+        background-color: rgba(220, 255, 217, 0.4);
       }
     }
+
+
+    //  circle nav
     .circle_container {
-      width: 40vw;
-      height: 10vh;
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -52,18 +119,38 @@
       height: 1rem;
       display: block;
       border-radius: 50%;
-      margin: 3px;
-      background-color: gray;
+      margin: 3px 5px;
+      background-color: #a0a0a0;
+      opacity: .2;
     }
     .current {
-      background-color: burlywood;
+      background-color: #a0a0a0;
+      opacity: 1;
     }
 
     .days_container {
       display: flex;
       flex-direction: rows;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      width: 100%;
+      height: 130px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: solid 1px #b2b1aa;
+      margin-bottom: 10px;
+
+      label{
+        border-radius: 0px;
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
+      }
+
+      label[for="0"]{
+        border-left: none;
+      }
+
       .checkbox_days {
         position: absolute;
         height: 0;
@@ -75,10 +162,13 @@
         cursor: pointer;
         border: black solid 1px;
         padding: 1em;
+        border-radius: 0px;
+        font-size: 18px;
+        font-weight: 500;
       }
 
       [type='checkbox']:checked + p {
-        background-color: gray;
+        background-color: rgba(220, 255, 217, 0.4);
       }
     }
   }

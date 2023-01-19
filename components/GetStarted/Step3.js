@@ -75,8 +75,9 @@ const Step3 = ({
   return (
     <>
       <p>STEP {step}/4 Working Days & Hours</p>
-      <p>What are your working days & hours</p>
-      <form className="form_wrapper">
+      <h3>What are your working days & hours</h3>
+      <span>(Select all that apply)</span>
+      <form className="form_wrapper step3">
         <section className={styles['form_fields']}>
           <fieldset>
             {shift.map((obj, i) => {
@@ -98,7 +99,7 @@ const Step3 = ({
                       style={{
                         border: shiftError
                           ? 'solid red 1px'
-                          : 'solid black 1px',
+                          : 'solid transparent 1px',
                       }}
                     >
                       {obj.icon}
@@ -108,53 +109,56 @@ const Step3 = ({
               );
             })}
           </fieldset>
-          <fieldset>
-            <label htmlFor="whours">Working Hours</label>
-            <input
-              required
-              type="number"
-              id="whours"
-              name="whours"
-              value={whours}
-              onChange={(e) => {
-                updatewhours(e);
-              }}
-              style={{
-                border: whoursError ? 'solid red 1px' : 'solid black 1px',
-              }}
-            />
-          </fieldset>
-          <fieldset>
-            <div className={styles['days_container']}>
-              {wdays.map((obj, i) => {
-                return (
-                  <>
-                    <label htmlFor={i}>
-                      <input
-                        type="checkbox"
-                        key={i}
-                        value={obj.day}
-                        id={i}
-                        name="wdays"
-                        className={styles['checkbox_days']}
-                        onChange={updateWdays(i)}
-                        checked={obj.isChecked}
-                      ></input>
-                      <p
-                        style={{
-                          border: wdaysError
-                            ? 'solid red 1px'
-                            : 'solid black 1px',
-                        }}
-                      >
-                        {obj.day}
-                      </p>
-                    </label>
-                  </>
-                );
-              })}
-            </div>
-          </fieldset>
+          <div className="days_hrs_wrap">
+            <fieldset className="work_hrs">
+              <label htmlFor="whours">Working Hours</label>
+              <input
+                required
+                type="number"
+                id="whours"
+                name="whours"
+                value={whours}
+                onChange={(e) => {
+                  updatewhours(e);
+                }}
+                style={{
+                  border: whoursError ? 'solid red 1px' : 'solid #b2b1aa 1px',
+                }}
+              />
+            </fieldset>
+            <fieldset className="work_days">
+              <div className={styles['days_container']}>
+                {wdays.map((obj, i) => {
+                  return (
+                    <>
+                      <label htmlFor={i}>
+                        <input
+                          type="checkbox"
+                          key={i}
+                          value={obj.day}
+                          id={i}
+                          name="wdays"
+                          className={styles['checkbox_days']}
+                          onChange={updateWdays(i)}
+                          checked={obj.isChecked}
+                        ></input>
+                        <p
+                          style={{
+                            border: wdaysError
+                              ? 'solid red 1px'
+                              : 'solid transparent 1px',
+                          }}
+                        >
+                          {obj.day}
+                        </p>
+                      </label>
+                    </>
+                  );
+                })}
+              </div>
+              <p>Working days</p>
+            </fieldset>
+          </div>
           {/* <input type="hidden" id="date" name="date" value={selected}></input> */}
         </section>
         <section className={styles['form_submit']}>

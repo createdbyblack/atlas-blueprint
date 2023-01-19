@@ -30,6 +30,27 @@ header{
       width: 100%;
       padding: 0;
     }
+
+    &.sub-page{
+        .menu a{
+            color: var(--color-black);
+        }
+
+        .light_logo{
+            display: none!important;
+        }
+
+        .dark_logo{
+            display: block;
+        }
+        
+    }
+
+    &.home{
+        .dark_logo{
+            display: none!important;
+        }
+    }
 }
 
 // About Section
@@ -326,6 +347,187 @@ header{
                     transform: scale(1);
                 }
             }
+        }
+    }
+}
+
+// Get Started
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.form_wrapper{
+
+    fieldset{
+      display: flex;
+      gap: 15px;
+      width: 100%;
+      justify-content: space-between;
+      padding: 15px 0 45px 0!important;
+
+      label{
+        width: 100%;
+        border-radius: 30px;
+        border: solid 1px #b2b1aa;
+        background-color: rgba(222, 221, 217, 0.4);
+        overflow: hidden;
+      }
+
+      p{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0!important;
+        color: #898880;
+        border-radius: 30px;
+      }
+    }
+
+    &.step1{
+
+        label{
+            height: 270px;
+        }
+
+        p{
+            font-size: 100px!important;
+        }
+    }
+}
+
+// step 2
+.step2{
+
+    fieldset{
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        label{
+            flex-basis: 48%;
+            height: 130px;
+
+            p{
+                font-size: 3rem!important;
+            }
+        }
+    }
+}
+
+// step 3
+.step3{
+
+    fieldset{
+        padding: 15px 0 20px 0 !important;
+        flex-basis: 65%;
+
+        label{
+            height: 130px;
+        }
+    }
+
+    .days_hrs_wrap{
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+
+        fieldset.work_hrs{
+            display: flex;
+            flex-direction: column-reverse;
+            gap:0px;
+            flex-basis: 45%;
+            padding: 15px 0 45px 0 !important;
+
+
+            label{
+                height: auto;
+                background-color: transparent;
+                border: none;
+                font-weight: 500;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            input{
+                width: 100%;
+                border-radius: 30px;
+                border: solid 1px #b2b1aa;
+                background-color: rgba(222, 221, 217, 0.4);
+                overflow: hidden;
+                height: 130px;
+                text-align: center;
+                font-weight: 500;
+                color: rgb(137 136 128 / 50%);
+                font-size: 4.5rem;
+                padding: 0 18px;
+                outline: none;
+                margin-bottom: 10px;
+                
+
+                &:focus-visible{
+                    border: none;
+                }
+            }
+
+
+        }
+    }
+
+    .work_days{
+        flex-direction: column;
+        gap:0px;
+
+        p{
+            font-weight: 500;
+            text-align: center;
+            text-transform: uppercase;
+            color: var(--color-black);
+        }
+    }
+
+}
+
+// step 4
+.step4{
+     section:nth-child(1){
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 10px;
+        padding-bottom: 20px;
+
+        fieldset{
+            flex-basis: 48%;
+
+            &:nth-child(3),
+            &:nth-child(4),
+            &:nth-child(5){
+                flex-basis: 31%;
+            }
+        }
+    }
+    fieldset{
+        display: block;
+        text-align: left;
+        padding: 10px 0 0px 0 !important;
+        flex-basis: 48%;
+
+        label{
+            border: none;
+            padding: 0px;
+            background: transparent;
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+            padding-left: 15px;
+        }
+
+        input{
+            border-radius: 10px;
+            border: solid 1px #b2b1aa;
+            background-color: rgba(222, 221, 217, 0.4);
+            height: 45px;
+            outline: none;
+            padding: 5px 15px;
+            width: 100%;
+
+            
         }
     }
 }

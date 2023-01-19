@@ -37,8 +37,8 @@ const Step1 = ({ stepIncrement, step, clientType, setClientType }) => {
   return (
     <>
       <p>STEP {step}/4 Individual or organization</p>
-      <p>Are you an individual or organization?</p>
-      <form className="form_wrapper">
+      <h3>Are you an individual or organization?</h3>
+      <form className="form_wrapper step1 ">
         <section className={styles['form_fields']}>
           <fieldset>
             {clientType.map((obj, i) => {
@@ -60,7 +60,7 @@ const Step1 = ({ stepIncrement, step, clientType, setClientType }) => {
                       style={{
                         border: clientTypeError
                           ? 'solid red 1px'
-                          : 'solid black 1px',
+                          : 'solid transparent 1px',
                       }}
                     >
                       {obj.icon}
