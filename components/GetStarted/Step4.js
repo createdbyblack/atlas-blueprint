@@ -38,7 +38,7 @@ const Step4 = ({
         <form className="form_wrapper step4">
           <section className={styles['form_fields']}>
             <fieldset>
-              <label htmlFor="label1">label1</label>
+              <label htmlFor="label1">Company Name</label>
               <input
                 type="text"
                 required
@@ -49,7 +49,7 @@ const Step4 = ({
               ></input>
             </fieldset>
             <fieldset>
-              <label htmlFor="label2">label2</label>
+              <label htmlFor="label2">Company Website URL</label>
               <input
                 type="text"
                 required
@@ -60,7 +60,7 @@ const Step4 = ({
               ></input>
             </fieldset>
             <fieldset>
-              <label htmlFor="label3">label3</label>
+              <label htmlFor="label3">Contact Name</label>
               <input
                 type="text"
                 required
@@ -71,7 +71,7 @@ const Step4 = ({
               ></input>
             </fieldset>
             <fieldset>
-              <label htmlFor="label4">label4</label>
+              <label htmlFor="label4">Email</label>
               <input
                 type="text"
                 required
@@ -82,7 +82,7 @@ const Step4 = ({
               ></input>
             </fieldset>
             <fieldset>
-              <label htmlFor="label5">label5</label>
+              <label htmlFor="label5">Phone Number</label>
               <input
                 type="text"
                 required
@@ -93,7 +93,7 @@ const Step4 = ({
               ></input>
             </fieldset>
             <fieldset>
-              <label htmlFor="label6">label6</label>
+              <label htmlFor="label6">Country</label>
               <input
                 type="text"
                 required
@@ -104,7 +104,7 @@ const Step4 = ({
               ></input>
             </fieldset>
             <fieldset>
-              <label htmlFor="label7">label7</label>
+              <label htmlFor="label7">City</label>
               <input
                 type="text"
                 required
