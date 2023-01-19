@@ -104,6 +104,7 @@ const Step3 = ({
                     >
                       {obj.icon}
                     </p>
+                    <span>{obj.shift}</span>
                   </label>
                 </>
               );
@@ -150,7 +151,8 @@ const Step3 = ({
                           }}
                         >
                           {obj.day}
-                        </p>
+                          <img src='../icon-check.svg' />                        
+                          </p>
                       </label>
                     </>
                   );

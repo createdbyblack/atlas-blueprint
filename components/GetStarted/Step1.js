@@ -65,6 +65,7 @@ const Step1 = ({ stepIncrement, step, clientType, setClientType }) => {
                     >
                       {obj.icon}
                     </p>
+                    <span>{obj.type}</span>
                   </label>
                 </>
               );

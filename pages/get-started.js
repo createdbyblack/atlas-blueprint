@@ -16,8 +16,10 @@ import Step3 from 'components/GetStarted/Step3';
 import Step4 from 'components/GetStarted/Step4';
 import SunIcon from 'components/GetStarted/Icons/SunIcon';
 import SunSetIcon from 'components/GetStarted/Icons/SunsetIcon';
-import { CiFaceSmile } from 'react-icons/ci';
-import { RiTeamLine } from 'react-icons/ri';
+import SmileyIcon from 'components/GetStarted/Icons/SmileyIcon';
+import OrganizationIcon from 'components/GetStarted/Icons/OrganizationIcon';
+// import { CiFaceSmile } from 'react-icons/ci';
+// import { RiTeamLine } from 'react-icons/ri';
 import ThankYou from 'components/GetStarted/ThankYou';
 import StepsIndicator from 'components/GetStarted/StepsIndicator';
 
@@ -33,8 +35,8 @@ export default function Page() {
 
   //step 1 form values
   const [clientType, setClientType] = useState([
-    { type: 'individual', icon: <CiFaceSmile /> },
-    { type: 'organization', icon: <RiTeamLine /> },
+    { type: 'individual', icon: <SmileyIcon /> },
+    { type: 'organization', icon: <OrganizationIcon /> },
   ]);
   //step2 form values
   const [peopleCount, setPeopleCount] = useState([

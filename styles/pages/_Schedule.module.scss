@@ -1,89 +1,101 @@
 .page_container {
-  width: 100vw;
-  height: 100vh;
+  // width: 100vw;
+  // height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  
 
   .schedule_wrapper {
-    width: 35%;
-    height: 85%;
-    border: 1px solid black;
+    // width: 35%;
+    // height: 85%;
+    box-shadow: 0 10px 60px 0 rgba(0, 255, 167, 0.16);
     border-radius: 25px;
+    padding: 80px 50px 40px 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     h2 {
-      font-size: 1.2em;
+      font-size: 3rem;
     }
     p {
-      font-size: 1.3rem;
+      
       margin: 0;
       color: #a6a6a6;
     }
     .calendar {
-      margin: 5rem;
-      width: 21vw;
-      height: 20vh;
+      // margin: 5rem;
+      width: 500px;
+      // height: 20vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding-top: 35px;
       p {
         color: black;
       }
       h6 {
-        font-size: 0.6em;
-        font-weight: bold;
-        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 15px;
       }
     }
 
     .calendar_header {
-      width: 28vw;
+      width: 100%;
       background-color: rgba(178, 177, 170, 255);
-      border-radius: 40px 40px 0px 0px;
+      border-radius: 30px 30px 0px 0px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      padding: 8px 30px;
     }
 
     .calendar_body {
-      width: 28vw;
+      width: 100%;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
+      background: #f2f2f2;
+      border-radius: 0 0 30px 30px;
     }
 
     .table_header {
-      width: 28vw;
+      // width: 28vw;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      background-color: rgba(242, 241, 240, 255);
+      background-color: #f2f1f0;
+      padding: 5px 20px;
     }
 
     .weekday {
       width: 4vw;
       text-align: center;
+      font-size: 14px;
     }
 
     .table_content {
-      width: 28vw;
+      // width: 28vw;
       flex-grow: 1;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between;
       box-sizing: border-box;
+      padding: 10px 15px 20px 15px;
     }
     .calendar_day {
       width: 4vw;
-      height: 1.5vw;
+      height: 30px;
       position: relative;
       //   border: 1px solid #a6a6a6;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
     .calendar_day:hover {
@@ -94,22 +106,23 @@
     .calendar_day p {
       position: absolute;
       color: #a6a6a6;
-      font-size: 0.6em;
+      font-size: 12px;
     }
 
     .current {
       width: 4vw;
-      height: 1.5vw;
+      height: 30px;
       position: relative;
       //   border: 1px solid #a6a6a6;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
     .current p {
       position: absolute;
       color: #000000;
-      font-size: 0.6em;
+      font-size: 12px;
     }
     .current:hover {
       background-color: rgba(0, 0, 0, 0.1);
@@ -117,7 +130,7 @@
     }
     .selected {
       width: 4vw;
-      height: 1.5vw;
+      height: 30px;
       position: relative;
       background-color: rgba(0, 0, 0, 0.5);
       //   border: 1px solid #a6a6a6;
@@ -129,7 +142,8 @@
       position: absolute;
       color: black;
       font-weight: bold;
-      font-size: 0.6em;
+      font-size: 12px;
+      line-height: 2.6;
     }
 
     .selected:hover {
@@ -138,7 +152,7 @@
 
     .today {
       width: 4vw;
-      height: 1.5vw;
+      height: 30px;
       position: relative;
       //   border: 1px solid #a6a6a6;
       border: 1px solid rgba(0, 0, 0, 0.5);
@@ -148,7 +162,8 @@
 
     .today p {
       position: absolute;
-      font-size: 0.6em;
+      font-size:12px;
+      line-height: 2.3;
     }
 
     .today:hover {
@@ -156,10 +171,15 @@
     }
 
     form {
+      width: 100%;
+      margin-bottom: 0px;
+      padding-top: 40px;
+
       .form_fields {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
+        column-gap: 12px;
 
         fieldset {
           margin-bottom: 0;
@@ -168,17 +188,18 @@
           display: flex;
           flex-direction: column;
           label {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-left: 3rem;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 20px;
           }
           input {
             background-color: rgba(242, 241, 240, 255);
             border: #dad9d6 1px solid;
-            height: 5rem;
+            height: 50px;
             border-radius: 8px;
-            margin-left: 1em;
-            margin-right: 1em;
+            width: 100%;
+            outline: none;
+            padding: 5px 20px;
           }
         }
       }
@@ -189,13 +210,15 @@
         align-items: center;
 
         button[type='submit'] {
-          font-size: 1.2rem;
+          font-size: 16px;
           font-weight: bold;
-          border-radius: 360px;
+          border-radius: 50px;
           padding: 10px 80px;
           cursor: pointer;
-          box-shadow: 0 0 4px #999;
+          box-shadow: none;
           outline: none;
+          height: 50px;
+          border: 1px solid;
         }
       }
     }
