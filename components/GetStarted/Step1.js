@@ -72,4 +72,3 @@ const Step1 = ({ stepIncrement, step, clientType, setClientType }) => {
 };
 
 export default Step1;
-//...
