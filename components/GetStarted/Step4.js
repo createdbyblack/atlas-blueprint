@@ -1,32 +1,61 @@
 import React from 'react';
+import { useState } from 'react';
 
 import FormButton from '../FormButton';
 import styles from '../../styles/pages/_Getstarted.module.scss';
 
+const website_regex = new RegExp(
+  /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi //eslint-disable-line
+);
+const email_regex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g); //eslint-disable-line
+
 const Step4 = ({
-  field1,
-  setField1,
-  field2,
-  setField2,
-  field3,
-  setField3,
-  field4,
-  setField4,
-  field5,
-  setField5,
-  field6,
-  setField6,
-  field7,
-  setField7,
+  companyName,
+  setCompanyName,
+  companyWebsite,
+  setCompanyWebsite,
+  contactName,
+  setContactName,
+  emailAddress,
+  setEmailAddress,
+  phoneNumber,
+  setPhoneNumber,
+  country,
+  setCountry,
+  city,
+  setCity,
   handleFinish,
   step,
 }) => {
+  const [companyWebsiteError, setCompanyWebsiteError] = useState();
+  const [emailAddressError, setEmailAddressError] = useState();
+
   const handleSubmit = () => {
+    //check if email inputted is a valid emailcompanyWebsite.match(website_regex)
+    companyWebsite.match(website_regex)
+      ? setCompanyWebsiteError(false)
+      : setCompanyWebsiteError(true);
+    emailAddress.match(email_regex)
+      ? setEmailAddressError(false)
+      : setEmailAddressError(true);
     //check if all fields are not blank
-    if (field1 && field2 && field3 && field4 && field5 && field6 && field7) {
-      handleFinish();
+    if (
+      companyName &&
+      companyWebsite &&
+      contactName &&
+      emailAddress &&
+      phoneNumber &&
+      country &&
+      city
+    ) {
+      if (
+        companyWebsite.match(website_regex) &&
+        emailAddress.match(email_regex)
+      ) {
+        handleFinish();
+      }
     } else {
-      alert('please complete all fields');
+      alert('Please complete all fields');
     }
   };
   return (
@@ -44,8 +73,8 @@ const Step4 = ({
                 required
                 id="label1"
                 name="label1"
-                value={field1}
-                onChange={(e) => setField1(e.target.value)}
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
               ></input>
             </fieldset>
             <fieldset>
@@ -55,8 +84,13 @@ const Step4 = ({
                 required
                 id="label2"
                 name="label2"
-                value={field2}
-                onChange={(e) => setField2(e.target.value)}
+                value={companyWebsite}
+                onChange={(e) => setCompanyWebsite(e.target.value)}
+                style={{
+                  border: companyWebsiteError
+                    ? 'solid red 1px'
+                    : 'solid #b2b1aa 1px',
+                }}
               ></input>
             </fieldset>
             <fieldset>
@@ -66,8 +100,8 @@ const Step4 = ({
                 required
                 id="label3"
                 name="label3"
-                value={field3}
-                onChange={(e) => setField3(e.target.value)}
+                value={contactName}
+                onChange={(e) => setContactName(e.target.value)}
               ></input>
             </fieldset>
             <fieldset>
@@ -77,8 +111,13 @@ const Step4 = ({
                 required
                 id="label4"
                 name="label4"
-                value={field4}
-                onChange={(e) => setField4(e.target.value)}
+                value={emailAddress}
+                onChange={(e) => setEmailAddress(e.target.value)}
+                style={{
+                  border: emailAddressError
+                    ? 'solid red 1px'
+                    : 'solid #b2b1aa 1px',
+                }}
               ></input>
             </fieldset>
             <fieldset>
@@ -88,8 +127,8 @@ const Step4 = ({
                 required
                 id="label5"
                 name="label5"
-                value={field5}
-                onChange={(e) => setField5(e.target.value)}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
               ></input>
             </fieldset>
             <fieldset>
@@ -99,8 +138,8 @@ const Step4 = ({
                 required
                 id="label6"
                 name="label6"
-                value={field6}
-                onChange={(e) => setField6(e.target.value)}
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
               ></input>
             </fieldset>
             <fieldset>
@@ -110,8 +149,8 @@ const Step4 = ({
                 required
                 id="label7"
                 name="label7"
-                value={field7}
-                onChange={(e) => setField7(e.target.value)}
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
               ></input>
             </fieldset>
           </section>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from 'styles/pages/_Getstarted.module.scss';
 
-const StepsIndicator = ({ step, setStep }) => {
+const StepsIndicator = ({ step }) => {
   const forms = [1, 2, 3, 4];
 
   return (

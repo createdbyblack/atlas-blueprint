@@ -9,98 +9,28 @@ const SunSetIcon = () => {
       viewBox="0 0 66.947 61.134"
     >
       <g
-        id="Icon_feather-sunset"
+        fill="none"
+        stroke="#898880"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="3"
         data-name="Icon feather-sunset"
         transform="translate(0 -1.5)"
       >
         <path
-          id="Path_27722"
+          d="M48.007 49.507a14.534 14.534 0 10-29.067 0"
           data-name="Path 27722"
-          d="M39.567,34.033a14.533,14.533,0,1,0-29.067,0"
-          transform="translate(8.44 15.474)"
-          fill="none"
-          stroke="#898880"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="3"
-        />
+        ></path>
+        <path d="M33.474 23.347V3" data-name="Path 27723"></path>
+        <path d="M10.86 26.893l4.128 4.128" data-name="Path 27724"></path>
+        <path d="M1.5 49.507h5.813" data-name="Path 27725"></path>
+        <path d="M59.634 49.507h5.813" data-name="Path 27726"></path>
+        <path d="M51.96 31.021l4.128-4.128" data-name="Path 27727"></path>
+        <path d="M65.447 61.134H1.5" data-name="Path 27728"></path>
         <path
-          id="Path_27723"
-          data-name="Path 27723"
-          d="M18,23.347V3"
-          transform="translate(15.474)"
-          fill="none"
-          stroke="#898880"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="3"
-        />
-        <path
-          id="Path_27724"
-          data-name="Path 27724"
-          d="M6.33,15.33l4.128,4.128"
-          transform="translate(4.53 11.563)"
-          fill="none"
-          stroke="#898880"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="3"
-        />
-        <path
-          id="Path_27725"
-          data-name="Path 27725"
-          d="M1.5,27H7.313"
-          transform="translate(0 22.507)"
-          fill="none"
-          stroke="#898880"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="3"
-        />
-        <path
-          id="Path_27726"
-          data-name="Path 27726"
-          d="M31.5,27h5.813"
-          transform="translate(28.134 22.507)"
-          fill="none"
-          stroke="#898880"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="3"
-        />
-        <path
-          id="Path_27727"
-          data-name="Path 27727"
-          d="M27.54,19.458l4.128-4.128"
-          transform="translate(24.42 11.563)"
-          fill="none"
-          stroke="#898880"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="3"
-        />
-        <path
-          id="Path_27728"
-          data-name="Path 27728"
-          d="M65.447,33H1.5"
-          transform="translate(0 28.134)"
-          fill="none"
-          stroke="#898880"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="3"
-        />
-        <path
-          id="Path_27729"
+          d="M45.101 11.72L33.474 23.347 21.847 11.72"
           data-name="Path 27729"
-          d="M35.254,7.5,23.627,19.127,12,7.5"
-          transform="translate(9.847 4.22)"
-          fill="none"
-          stroke="#898880"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="3"
-        />
+        ></path>
       </g>
     </svg>
   );

@@ -7,14 +7,11 @@ const Step1 = ({ stepIncrement, step, clientType, setClientType }) => {
   const [clientTypeError, setClientTypeError] = useState();
 
   //update client state
-  const updateClientType = (index) => (e) => {
+  const handleSelectClientType = (index) => (e) => {
     let updatedClientType = [...clientType];
+
     updatedClientType.forEach((obj, i) => {
-      if (i == index) {
-        obj.isChecked = e.target.checked;
-      } else {
-        obj.isChecked = false;
-      }
+      i == index ? (obj.isChecked = e.target.checked) : (obj.isChecked = false);
     });
     setClientType(updatedClientType);
     setClientTypeError(false);
@@ -22,16 +19,10 @@ const Step1 = ({ stepIncrement, step, clientType, setClientType }) => {
 
   //go to next step
   const handleNext = () => {
-    let selectedClientType = clientType.find((obj) => {
-      return obj.isChecked == true;
-    });
-
     //check if user clicked an option
-    if (selectedClientType == undefined) {
-      setClientTypeError(true);
-    } else {
-      stepIncrement();
-    }
+    clientType.find((obj) => obj.isChecked == true)
+      ? stepIncrement()
+      : setClientTypeError(true);
   };
 
   return (
@@ -54,7 +45,7 @@ const Step1 = ({ stepIncrement, step, clientType, setClientType }) => {
                       value={obj.type}
                       className={styles['radio_shift']}
                       checked={obj.isChecked}
-                      onChange={updateClientType(i)}
+                      onChange={handleSelectClientType(i)}
                     ></input>
                     <p
                       style={{

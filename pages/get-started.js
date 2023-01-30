@@ -1,15 +1,11 @@
 import * as MENUS from 'constants/menus';
 
-import { gql, useQuery } from '@apollo/client';
-import { getNextStaticProps } from '@faustwp/core';
-import {
-  Footer,
-  Header,
-  SEO,
-  NavigationMenu,
-} from 'components';
-import { BlogInfoFragment } from 'fragments/GeneralSettings';
 import { useState } from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
+import { getNextStaticProps } from '@faustwp/core';
+import { Footer, Header, SEO, NavigationMenu } from 'components';
+import { BlogInfoFragment } from 'fragments/GeneralSettings';
 import Step1 from 'components/GetStarted/Step1';
 import Step2 from 'components/GetStarted/Step2';
 import Step3 from 'components/GetStarted/Step3';
@@ -25,30 +21,56 @@ import StepsIndicator from 'components/GetStarted/StepsIndicator';
 
 import styles from '../styles/pages/_Getstarted.module.scss';
 
+// const ADD_CONTACT = gql`
+//   mutation submitMonochromBookingForm($input: SubmitMonochromBookingForm!) {
+//     submitMonochromBookingForm(input: $input) {
+//       successMessage
+//       errors
+//     }
+//   }
+// `;
+
+const ADD_CONTACT = gql`
+  mutation submitMonochromBookingForm(
+    $input: SubmitMonochromBookingFormInput!
+  ) {
+    submitMonochromBookingForm(input: $input) {
+      successMessage
+      errors
+    }
+  }
+`;
+
 export default function Page() {
   const { data } = useQuery(Page.query, {
     variables: Page.variables(),
   });
+  const [submitMonochromBookingForm, { error, loading }] =
+    useMutation(ADD_CONTACT);
 
   const [step, setStep] = useState(1);
   var form;
 
   //step 1 form values
   const [clientType, setClientType] = useState([
-    { type: 'individual', icon: <SmileyIcon /> },
-    { type: 'organization', icon: <OrganizationIcon /> },
+    { type: 'individual', icon: <SmileyIcon />, inputKey: ['individual'] },
+    {
+      type: 'organization',
+      icon: <OrganizationIcon />,
+      inputKey: ['organization'],
+    },
   ]);
   //step2 form values
   const [peopleCount, setPeopleCount] = useState([
-    { count: '1-25' },
-    { count: '26-100' },
-    { count: '101-1000' },
-    { count: '1000+' },
+    { count: '1-25', inputKey: ['peoplea'] },
+    { count: '26-100', inputKey: ['peopleb'] },
+    { count: '101-1000', inputKey: ['peoplec'] },
+    { count: '1000+', inputKey: ['peopled'] },
   ]);
   //step 3 form values
-  const [shift, setShift] = useState([
-    { shift: 'dayshift', icon: <SunIcon /> },
-    { shift: 'nightshift', icon: <SunSetIcon /> },
+  const [emShift, setEmShift] = useState([
+    { shift: 'dayshift', icon: <SunIcon />, inputKey: ['dayshift'] },
+    { shift: 'nightshift', icon: <SunSetIcon />, inputKey: ['nightshift'] },
   ]);
   const [whours, setWhours] = useState(0);
   const [wdays, setWdays] = useState([
@@ -62,39 +84,47 @@ export default function Page() {
   ]);
 
   //step 4 form values
-  const [field1, setField1] = useState('');
-  const [field2, setField2] = useState('');
-  const [field3, setField3] = useState('');
-  const [field4, setField4] = useState('');
-  const [field5, setField5] = useState('');
-  const [field6, setField6] = useState('');
-  const [field7, setField7] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [companyWebsite, setCompanyWebsite] = useState('');
+  const [contactName, setContactName] = useState('');
+  const [emailAddress, setEmailAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [country, setCountry] = useState('');
+  const [city, setCity] = useState('');
 
   const stepIncrement = () => {
     setStep(step + 1);
   };
 
   //log formdata in the console
-  const handleFinish = () => {
+  const handleFinish = async () => {
     const workingdays = wdays
       .filter((obj) => obj.isChecked == true)
-      .map((obj) => obj.day);
+      .map((obj) => obj.day.toLowerCase());
 
-    const formData = {
-      client: clientType.find((obj) => obj.isChecked == true).type,
-      people: peopleCount.find((obj) => obj.isChecked == true).count,
-      shift: shift.find((obj) => obj.isChecked == true).shift,
-      workingHours: whours,
-      workingDays: workingdays,
-      field1: field1,
-      field2: field2,
-      field3: field3,
-      field4: field4,
-      field5: field5,
-      field6: field6,
-      field7: field7,
-    };
-    console.log(formData);
+    const result = await submitMonochromBookingForm({
+      variables: {
+        input: {
+          client: clientType.find((obj) => obj.isChecked == true).inputKey,
+          people: peopleCount.find((obj) => obj.isChecked == true).inputKey,
+          shift: emShift.find((obj) => obj.isChecked == true).inputKey,
+          working_hours: whours,
+          working_days: workingdays,
+          company_name: companyName,
+          company_website: companyWebsite,
+          contact_name: contactName,
+          email_address: emailAddress,
+          phone_number: phoneNumber,
+          country,
+          city,
+        },
+      },
+    });
+    if (result?.data?.errors) {
+      alert('there was an error sending the data');
+      console.log(result);
+    }
+    console.log(result);
     stepIncrement();
   };
 
@@ -127,8 +157,8 @@ export default function Page() {
           step={step}
           whours={whours}
           setWhours={setWhours}
-          shift={shift}
-          setShift={setShift}
+          shift={emShift}
+          setShift={setEmShift}
           wdays={wdays}
           setWdays={setWdays}
         />
@@ -137,20 +167,20 @@ export default function Page() {
     case 4:
       form = (
         <Step4
-          field1={field1}
-          setField1={setField1}
-          field2={field2}
-          setField2={setField2}
-          field3={field3}
-          setField3={setField3}
-          field4={field4}
-          setField4={setField4}
-          field5={field5}
-          setField5={setField5}
-          field6={field6}
-          setField6={setField6}
-          field7={field7}
-          setField7={setField7}
+          companyName={companyName}
+          setCompanyName={setCompanyName}
+          companyWebsite={companyWebsite}
+          setCompanyWebsite={setCompanyWebsite}
+          contactName={contactName}
+          setContactName={setContactName}
+          emailAddress={emailAddress}
+          setEmailAddress={setEmailAddress}
+          phoneNumber={phoneNumber}
+          setPhoneNumber={setPhoneNumber}
+          country={country}
+          setCountry={setCountry}
+          city={city}
+          setCity={setCity}
           handleFinish={handleFinish}
           step={step}
         />
@@ -162,15 +192,17 @@ export default function Page() {
     default:
       return null;
   }
-  
+
   const primaryMenu = data?.headerMenuItems?.nodes ?? [];
   const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
+  if (loading) return <p>Submitting form...</p>;
+  if (error) {
+    console.log(error);
+  }
   return (
     <>
-      <SEO
-        title="Get Started"
-      />
+      <SEO title="Get Started" />
 
       <Header
         className="sub-page"
@@ -181,11 +213,12 @@ export default function Page() {
       <div className={styles['page_container']}>
         <div className={styles['page_wrapper']}>
           <div className={styles['message']}>
-            <h2 className={styles['font_baskerville']}>Get started with Monochrom <em>today!</em></h2>
+            <h2 className={styles['font_baskerville']}>
+              Get started with Monochrom <em>today!</em>
+            </h2>
             <p>
-              All you need to do is answer 
-              these quick questions and your journey to
-              light therapy can begin.
+              All you need to do is answer these quick questions and your
+              journey to light therapy can begin.
             </p>
           </div>
           <div className={styles['form_container']}>
@@ -200,7 +233,6 @@ export default function Page() {
     </>
   );
 }
-
 
 Page.variables = () => {
   return {

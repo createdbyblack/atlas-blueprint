@@ -7,30 +7,21 @@ const Step2 = ({ stepIncrement, step, peopleCount, setPeopleCount }) => {
   const [peopleCountError, setPeopleCountError] = useState();
 
   //update count state
-  const updatePeopleCount = (index) => (e) => {
+  const handleSelectPeopleCount = (index) => (e) => {
     let updatedPeopleCount = [...peopleCount];
+
     updatedPeopleCount.forEach((obj, i) => {
-      if (i == index) {
-        obj.isChecked = e.target.checked;
-      } else {
-        obj.isChecked = false;
-      }
+      i == index ? (obj.isChecked = e.target.checked) : (obj.isChecked = false);
     });
     setPeopleCount(updatedPeopleCount);
     setPeopleCountError(false);
   };
   //go to next step
   const handleNext = () => {
-    let selectedPeopleCount = peopleCount.find((obj) => {
-      return obj.isChecked == true;
-    });
-
     //check if user clicked an option
-    if (selectedPeopleCount == undefined) {
-      setPeopleCountError(true);
-    } else {
-      stepIncrement();
-    }
+    peopleCount.find((obj) => obj.isChecked == true)
+      ? stepIncrement()
+      : setPeopleCountError(true);
   };
 
   return (
@@ -53,7 +44,7 @@ const Step2 = ({ stepIncrement, step, peopleCount, setPeopleCount }) => {
                       value={obj.count}
                       className={styles['radio_shift']}
                       checked={obj.isChecked}
-                      onChange={updatePeopleCount(i)}
+                      onChange={handleSelectPeopleCount(i)}
                     ></input>
                     <p
                       style={{

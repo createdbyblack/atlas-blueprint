@@ -18,27 +18,17 @@ const Step3 = ({
   const [wdaysError, setWdaysError] = useState();
 
   //update shift state
-  const updateShift = (index) => (e) => {
+  const handleSelectShift = (index) => (e) => {
     let updatedShift = [...shift];
     updatedShift.forEach((obj, i) => {
-      if (i == index) {
-        obj.isChecked = e.target.checked;
-      } else {
-        obj.isChecked = false;
-      }
+      i == index ? (obj.isChecked = e.target.checked) : (obj.isChecked = false);
     });
     setShift(updatedShift);
     setShiftError(false);
   };
 
-  //update working hours state
-  const updatewhours = (e) => {
-    setWhours(e.target.value);
-    setWhoursError(false);
-  };
-
   //update working days state
-  const updateWdays = (index) => (e) => {
+  const handleSelectWorkingDays = (index) => (e) => {
     let updatedWdays = [...wdays];
     updatedWdays[index].isChecked = e.target.checked;
     setWdays(updatedWdays);
@@ -47,7 +37,6 @@ const Step3 = ({
 
   //go to next step
   const handleNext = () => {
-    console.log(whours);
     let selectedShift = shift.find((obj) => {
       return obj.isChecked == true;
     });
@@ -65,10 +54,17 @@ const Step3 = ({
       setWdaysError(true);
     }
 
-    if (whours < 1) {
+    if (whours < 1 || 24 < whours) {
       setWhoursError(true);
+      alert('Please input working hours from 1 to 24');
     }
-    if (selectedShift != undefined && selectedWdays.length > 0 && whours > 0) {
+
+    if (
+      selectedShift != undefined &&
+      selectedWdays.length > 0 &&
+      0 < whours &&
+      whours < 25
+    ) {
       stepIncrement();
     }
   };
@@ -93,7 +89,7 @@ const Step3 = ({
                       value={obj.shift}
                       className={styles['radio_shift']}
                       checked={obj.isChecked}
-                      onChange={updateShift(i)}
+                      onChange={handleSelectShift(i)}
                     ></input>
                     <p
                       style={{
@@ -116,11 +112,14 @@ const Step3 = ({
               <input
                 required
                 type="number"
+                min="0"
+                max="24"
                 id="whours"
                 name="whours"
                 value={whours}
                 onChange={(e) => {
-                  updatewhours(e);
+                  setWhours(e.target.value);
+                  setWhoursError(false);
                 }}
                 style={{
                   border: whoursError ? 'solid red 1px' : 'solid #b2b1aa 1px',
@@ -140,7 +139,7 @@ const Step3 = ({
                           id={i}
                           name="wdays"
                           className={styles['checkbox_days']}
-                          onChange={updateWdays(i)}
+                          onChange={handleSelectWorkingDays(i)}
                           checked={obj.isChecked}
                         ></input>
                         <p
@@ -151,8 +150,8 @@ const Step3 = ({
                           }}
                         >
                           {obj.day}
-                          <img src='../icon-check.svg' />                        
-                          </p>
+                          <img src="../icon-check.svg" alt="check-icon" />
+                        </p>
                       </label>
                     </>
                   );
